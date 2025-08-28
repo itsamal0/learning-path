@@ -12,7 +12,7 @@ This file documents my progress through a structured **25-course roadmap** from 
 | 04  | Advanced Solutions for Algorithms Level 1 | ✅ Completed | — |
 | 05  | Algorithms Level 2 | ✅ Completed | [Rock–Paper–Scissors](./course05-algorithms-level-2/projects/rock-paper-scissors)<br>[Math Quiz Game](./course05-algorithms-level-2/projects/math-quiz-game) |
 | 06  | C++ Level 2 | ✅ Completed | — |
-| 07  | Algorithms Level 3 | Not Started |  |
+| 07  | Algorithms Level 3 | ⏳ In Progress |  |
 | 08  | Algorithms Level 4 | Not Started |  |
 | 09  | Foundations Level 2 | Not Started |  |
 | 10  | OOP Level 1 | Not Started |  |
