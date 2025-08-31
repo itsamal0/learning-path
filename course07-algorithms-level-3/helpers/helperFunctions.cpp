@@ -30,3 +30,7 @@ char helperFunctions::readLetter(string message) {
     cin >> c;
     return c;
 }
+
+char helperFunctions::inverLetterCase(char c) {
+    return isupper(c) ? tolower(c) : toupper(c);
+}
