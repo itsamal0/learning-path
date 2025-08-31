@@ -58,6 +58,10 @@ string helperFunctions::trimRight(string str) {
     return str;
 }
 
+string helperFunctions::trim(string str) {
+    return trimLeft(trimRight(str));
+}
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;

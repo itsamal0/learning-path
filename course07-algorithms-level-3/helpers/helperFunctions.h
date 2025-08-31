@@ -10,6 +10,7 @@ namespace helperFunctions
     std::vector<std::string> splitString(std::string str, std::string delimiter);
     std::string trimLeft(std::string str);
     std::string trimRight(std::string str);
+    std::string trim(std::string str);
     char readLetter(std::string message);
     char inverLetterCase(char c);
 }
