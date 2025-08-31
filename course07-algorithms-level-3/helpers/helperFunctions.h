@@ -8,6 +8,7 @@ namespace helperFunctions
     std::string upperAllString(std::string str);
     std::string lowerAllString(std::string str);
     std::vector<std::string> splitString(std::string str, std::string delimiter);
+    std::string trimLeft(std::string str);
     char readLetter(std::string message);
     char inverLetterCase(char c);
 }

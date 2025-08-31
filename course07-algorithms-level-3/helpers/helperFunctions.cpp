@@ -44,6 +44,13 @@ vector<string> helperFunctions::splitString(string str, string delimiter) {
     return vString;
 }
 
+string helperFunctions::trimLeft(string str) {
+    while (!str.empty() && str[0] == ' ') {
+        str.erase(0, 1);
+    }
+    return str;
+}
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;
