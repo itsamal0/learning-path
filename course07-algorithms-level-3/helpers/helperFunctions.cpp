@@ -51,6 +51,13 @@ string helperFunctions::trimLeft(string str) {
     return str;
 }
 
+string helperFunctions::trimRight(string str) {
+    while (!str.empty() && str[str.length() - 1] == ' ') {
+        str.erase(str.length() - 1, 1);
+    }
+    return str;
+}
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;
