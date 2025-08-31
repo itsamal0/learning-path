@@ -15,6 +15,7 @@ namespace helperFunctions
     std::string joinString(std::string strArr[], short arrSize, std::string delimiter);
     std::string reverseWordsInString(std::string str);
     std::string replace(std::string str, std::string targetWord, std::string replacementWord, bool matchCase = true);
+    std::string removePunctuationsFromString(std::string str);
     char readLetter(std::string message);
     char inverLetterCase(char c);
 }

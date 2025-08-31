@@ -117,6 +117,17 @@ string helperFunctions::replace(string str, string targetWord, string replacemen
     return helperFunctions::joinString(vString, " ");
 }
 
+string helperFunctions::removePunctuationsFromString(string str) {
+    string str2 = "";
+    for (int i = 0; i < str.length(); i++) {
+        if (!ispunct(str[i])) {
+            str2 += str[i];
+        }
+    }
+    return str2;
+}
+
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;
