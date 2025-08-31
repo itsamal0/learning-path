@@ -13,6 +13,7 @@ namespace helperFunctions
     std::string trim(std::string str);
     std::string joinString(const std::vector<std::string>& vString, std::string delimiter);
     std::string joinString(std::string strArr[], short arrSize, std::string delimiter);
+    std::string reverseWordsInString(std::string str);
     char readLetter(std::string message);
     char inverLetterCase(char c);
 }

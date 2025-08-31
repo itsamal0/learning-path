@@ -81,6 +81,21 @@ string helperFunctions::joinString(string strArr[], short arrSize, string delimi
     return str.substr(0, str.length() - delimiter.length());
 }
 
+string helperFunctions::reverseWordsInString(string str) { 
+    vector<string> vString;
+    string str2 = "";
+    vString = helperFunctions::splitString(str, " ");
+
+    vector<string>::iterator iter = vString.end();
+    while (iter != vString.begin()) {
+        --iter;
+        str2 += *iter + " ";
+    }
+
+    str2 = str2.substr(0, str2.length() - 1);
+    return str2;
+}
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;
