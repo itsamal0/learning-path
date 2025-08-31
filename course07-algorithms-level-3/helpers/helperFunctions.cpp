@@ -23,3 +23,10 @@ string helperFunctions::lowerAllString(string str) {
     }
     return str;
 }
+
+char helperFunctions::readLetter(string message) {
+    char c = ' ';
+    cout << message << endl;
+    cin >> c;
+    return c;
+}
