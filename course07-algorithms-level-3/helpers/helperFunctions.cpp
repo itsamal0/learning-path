@@ -73,6 +73,14 @@ string helperFunctions::joinString(const vector<string>& vString, string delimit
     return str.substr(0, str.length() - delimiter.length());
 }
 
+string helperFunctions::joinString(string strArr[], short arrSize, string delimiter) {
+    string str = "";
+    for (int i = 0; i < arrSize; i++) {
+        str += strArr[i] + delimiter;
+    }
+    return str.substr(0, str.length() - delimiter.length());
+}
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;
