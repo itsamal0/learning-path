@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include "../helpers/helperFunctions.h"
 using namespace std;
 
 /*
@@ -11,48 +11,15 @@ using namespace std;
 ==================================================
 */
 
-// Read a full string from the user
-string readAString() {
-    string str = "";
-    cout << "Please enter your string ?" << endl;
-    getline(cin, str);
-    return str;
-}
-
-// Convert the entire string to uppercase
-string upperAllString(string str) {
-    short strLength = str.length();
-
-    for (int i = 0; i < strLength; i++) {
-        if (str[i]) {
-            str[i] = toupper(str[i]);
-        }
-    }
-
-    return str;
-}
-
-// Convert the entire string to lowercase
-string lowerAllString(string str) {
-    short strLength = str.length();
-
-    for (int i = 0; i < strLength; i++) {
-        if (str[i]) {
-            str[i] = tolower(str[i]);
-        }
-    }
-
-    return str;
-}
-
 int main() {
-    string str = readAString();
+    // Read string from user using helperFunctions
+    string str = helperFunctions::readString("Please enter your string ?");
 
     cout << "\nString after Uppercase:\n";
-    cout << upperAllString(str);
+    cout << helperFunctions::upperAllString(str);
 
     cout << "\nString after Lowercase:\n";
-    cout << lowerAllString(str);
+    cout << helperFunctions::lowerAllString(str);
 
     // Wait for user input before closing the console
     system("pause>0");
