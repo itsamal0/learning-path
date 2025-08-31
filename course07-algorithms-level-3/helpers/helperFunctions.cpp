@@ -96,6 +96,27 @@ string helperFunctions::reverseWordsInString(string str) {
     return str2;
 }
 
+
+string helperFunctions::replace(string str, string targetWord, string replacementWord, bool matchCase)
+{
+    vector<string> vString;
+    vString = helperFunctions::splitString(str, " ");
+
+    for (string& s : vString) {
+        if (matchCase) {
+            if (s == targetWord) {
+                s = replacementWord;
+            }
+        } else {
+            if (helperFunctions::lowerAllString(s) == helperFunctions::lowerAllString(targetWord)) {
+                s = replacementWord;
+            }
+        }
+    }
+
+    return helperFunctions::joinString(vString, " ");
+}
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;
