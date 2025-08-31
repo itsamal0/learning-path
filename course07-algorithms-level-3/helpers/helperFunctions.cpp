@@ -138,3 +138,26 @@ char helperFunctions::readLetter(string message) {
 char helperFunctions::inverLetterCase(char c) {
     return isupper(c) ? tolower(c) : toupper(c);
 }
+
+int helperFunctions::readPositiveNumber(string message) {
+    int num = 0;
+    bool validInput = false;
+
+    do {
+        cout << message;
+        cin >> num;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Invalid input! Please enter a number.\n";
+        } else if (num <= 0) {
+            cout << "Number must be positive!\n";
+        } else {
+            validInput = true;
+        }
+
+    } while (!validInput);
+
+    return num;
+}

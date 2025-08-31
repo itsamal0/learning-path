@@ -18,4 +18,5 @@ namespace helperFunctions
     std::string removePunctuationsFromString(std::string str);
     char readLetter(std::string message);
     char inverLetterCase(char c);
+    int readPositiveNumber(std::string message);
 }
