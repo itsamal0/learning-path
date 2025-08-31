@@ -24,6 +24,26 @@ string helperFunctions::lowerAllString(string str) {
     return str;
 }
 
+vector<string> helperFunctions::splitString(string str, string delimiter) {
+    vector<string> vString;
+    short pos = 0;
+    string word;
+
+    while ((pos = str.find(delimiter)) != string::npos) {
+        word = str.substr(0, pos);
+        if (!word.empty()) {
+            vString.push_back(word);
+        }
+        str.erase(0, pos + delimiter.length());
+    }
+
+    if (!str.empty()) {
+        vString.push_back(str);
+    }
+
+    return vString;
+}
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;
