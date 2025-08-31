@@ -62,6 +62,17 @@ string helperFunctions::trim(string str) {
     return trimLeft(trimRight(str));
 }
 
+string helperFunctions::joinString(const vector<string>& vString, string delimiter) {
+    if (vString.empty()) return "";
+
+    string str = "";
+    for (const string& word : vString) {
+        str += word + delimiter;
+    }
+
+    return str.substr(0, str.length() - delimiter.length());
+}
+
 char helperFunctions::readLetter(string message) {
     char c = ' ';
     cout << message << endl;

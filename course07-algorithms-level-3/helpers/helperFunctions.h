@@ -11,6 +11,7 @@ namespace helperFunctions
     std::string trimLeft(std::string str);
     std::string trimRight(std::string str);
     std::string trim(std::string str);
+    std::string joinString(const std::vector<std::string>& vString, std::string delimiter);
     char readLetter(std::string message);
     char inverLetterCase(char c);
 }
