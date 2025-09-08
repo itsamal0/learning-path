@@ -1,5 +1,6 @@
 #include <iostream>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
+#include "../helpers/char_utils.h"
 using namespace std;
 
 /*
@@ -12,7 +13,6 @@ using namespace std;
 ==================================================
 */
 
-// Count occurrences of a specific character in a string
 short countLetter(string str, char letter, bool matchCase = true) {
     short counter = 0;
 
@@ -32,15 +32,13 @@ short countLetter(string str, char letter, bool matchCase = true) {
 }
 
 int main() {
-    // Read string and character from user using helperFunctions
-    string str = helperFunctions::readString("Please enter your string ?");
-    char letter = helperFunctions::readLetter("Please enter a character ?");
+    string str = io_utils::readString("Please enter your string ?");
+    char letter = io_utils::readLetter("Please enter a character ?");
 
     cout << "\nLetter '" << letter << "' count = " << countLetter(str, letter);
     cout << "\nLetter '" << letter << "' or '"
-         << helperFunctions::inverLetterCase(letter)
+         << char_utils::invertLetterCase(letter)
          << "' = " << countLetter(str, letter, false);
 
-    // Wait for user input before closing the console
     system("pause>0");
 }
