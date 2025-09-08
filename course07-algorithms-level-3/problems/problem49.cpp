@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
+#include "../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -28,7 +29,7 @@ struct stClient {
 // Convert a line from file to a client struct
 stClient convertLineToRecord(string str, string separator = "#//#") {
     stClient newClient;
-    vector<string> vString = helperFunctions::splitString(str, separator);
+    vector<string> vString = string_utils::splitString(str, separator);
 
     newClient.accountNumber  = vString[0];
     newClient.pinCode        = vString[1];
@@ -83,7 +84,7 @@ bool findClientByAccountNumber(string accountNumber, stClient& client) {
 
 int main() {
     // Read account number from user
-    string accountNumber = helperFunctions::readString("Please enter account number ?");
+    string accountNumber = io_utils::readString("Please enter account number ?");
 
     stClient client;
     if (findClientByAccountNumber(accountNumber, client)) {
