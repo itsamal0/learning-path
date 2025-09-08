@@ -1,13 +1,13 @@
 #include <iostream>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
 using namespace std;
 
 /*
 ==================================================
-   Problem: Write a program to count how many times 
-            a specific character appears in a string.
-   From   : Programming Advices – Course 7
-   Date   : 2025-08-31
+   Problem: Write a program to count how many times   
+            a specific character appears in a string.  
+   From   : Programming Advices – Course 7  
+   Date   : 2025-08-31  
 ==================================================
 */
 
@@ -25,9 +25,9 @@ short countLetter(string str, char letter) {
 }
 
 int main() {
-    // Read string and character from user using helperFunctions
-    string str = helperFunctions::readString("Please enter your string ?");
-    char letter = helperFunctions::readLetter("Please enter a character ?");
+    // Read string and character from user using io_utils
+    string str = io_utils::readString("Please enter your string ?");
+    char letter = io_utils::readLetter("Please enter a character ?");
 
     cout << "\nLetter '" << letter << "' count = " << countLetter(str, letter) << endl;
 
