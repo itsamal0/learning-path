@@ -1,10 +1,10 @@
 #include <iostream>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
 using namespace std;
 
 /*
 ==================================================
-   Problem: Write a program to print all vowels 
+   Problem: Write a program to print all vowels   
             in a string.
    From   : Programming Advices – Course 7
    Date   : 2025-08-31
@@ -28,8 +28,8 @@ void printVowelsLetters(string str) {
 }
 
 int main() {
-    // Read string from user using helperFunctions
-    string str = helperFunctions::readString("Please enter your string ?");
+    // Read string from user using io_utils
+    string str = io_utils::readString("Please enter your string ? ");
     printVowelsLetters(str);
 
     // Wait for user input before closing the console
