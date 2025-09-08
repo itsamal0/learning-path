@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
+#include "../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -20,12 +21,12 @@ void printVector(vector<string>& strArr) {
 }
 
 int main() {
-    // Read string and delimiter from user using helperFunctions
-    string str = helperFunctions::readString("Please enter your string ?");
-    string delimiter = helperFunctions::readString("Please enter a delimiter ?");
+    // Read string and delimiter from user using io_utils
+    string str = io_utils::readString("Please enter your string ?");
+    string delimiter = io_utils::readString("Please enter a delimiter ?");
 
-    // Split string using helperFunctions
-    vector<string> vString = helperFunctions::splitString(str, delimiter);
+    // Split string using string_utils
+    vector<string> vString = string_utils::splitString(str, delimiter);
 
     cout << "\nTokens = " << vString.size() << endl;
     printVector(vString);
