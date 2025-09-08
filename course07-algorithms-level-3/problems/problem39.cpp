@@ -1,7 +1,6 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -18,7 +17,7 @@ int main() {
     vector<string> vString = { "Kiyomi", "Dev" };
 
     cout << "\nJoined string: " 
-         << helperFunctions::joinString(vString, "#");
+         << string_utils::joinString(vString, "#");
 
     // Wait for user input before closing the console
     system("pause>0");
