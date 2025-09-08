@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
+#include "../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -29,7 +30,7 @@ struct stClient {
 // Convert a line from file to a client struct
 stClient convertLineToRecord(const string& str, const string& separator = "#//#") {
     stClient newClient;
-    vector<string> vString = helperFunctions::splitString(str, separator);
+    vector<string> vString = string_utils::splitString(str, separator);
 
     newClient.accountNumber  = vString[0];
     newClient.pinCode        = vString[1];
@@ -121,10 +122,10 @@ bool updateClientByAccountNumber(const string& accountNumber, vector<stClient>& 
 
             stClient updatedClient;
             updatedClient.accountNumber = accountNumber;
-            updatedClient.pinCode = helperFunctions::readString("\nEnter new pin code: ");
-            updatedClient.name = helperFunctions::readString("\nEnter new name: ");
-            updatedClient.phone = helperFunctions::readString("\nEnter new phone: ");
-            updatedClient.accountBalance = helperFunctions::readPositiveNumber("\nEnter new account balance: ");
+            updatedClient.pinCode = io_utils::readString("\nEnter new pin code: ");
+            updatedClient.name = io_utils::readString("\nEnter new name: ");
+            updatedClient.phone = io_utils::readString("\nEnter new phone: ");
+            updatedClient.accountBalance = io_utils::readPositiveNumber("\nEnter new account balance: ");
 
             // Update the client in the vector
             for (stClient& c : vClients) {
@@ -152,7 +153,7 @@ int main() {
     vector<stClient> vClients = loadClientsDataFromFile(clientsFileName);
 
     // Read account number from user
-    string accountNumber = helperFunctions::readString("Please enter account number ? ");
+    string accountNumber = io_utils::readString("Please enter account number ? ");
     updateClientByAccountNumber(accountNumber, vClients);
 
     // Wait for user input before closing
