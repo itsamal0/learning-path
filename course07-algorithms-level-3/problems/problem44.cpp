@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
+#include "../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -15,14 +16,14 @@ using namespace std;
 
 int main() {
     // Read original text from user
-    string originalText = helperFunctions::readString("\nPlease enter your text:");
+    string originalText = io_utils::readString("\nPlease enter your text:");
 
     // Show original string
     cout << "\nOriginal string:\n" << originalText << endl;
 
     // Remove punctuations using helperFunctions
     cout << "\n:Punctuation removed:\n" 
-         << helperFunctions::removePunctuationsFromString(originalText) << endl;
+         << string_utils::removePunctuationsFromString(originalText) << endl;
 
     // Wait for user input before closing
     system("pause>0");
