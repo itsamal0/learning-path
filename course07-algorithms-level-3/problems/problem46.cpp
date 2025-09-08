@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -24,7 +24,7 @@ struct stClient {
 // Convert a single line string to a client struct
 stClient convertLineToRecord(string str, string separator = "#//#") {
     stClient newClient;
-    vector<string> vString = helperFunctions::splitString(str, separator);
+    vector<string> vString = string_utils::splitString(str, separator);
 
     newClient.accountNumber   = vString[0];
     newClient.pinCode         = vString[1];
