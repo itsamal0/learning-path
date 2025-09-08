@@ -3,7 +3,8 @@
 #include <vector>
 #include <fstream>
 #include <iomanip>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
+#include "../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -43,11 +44,11 @@ string convertRecordToLine(stClient client, string separator = "#//#") {
 stClient readNewClient() {
     stClient newClient;
 
-    newClient.accountNumber  = helperFunctions::readString("\nEnter account number: ");
-    newClient.pinCode        = helperFunctions::readString("\nEnter pin code: ");
-    newClient.name           = helperFunctions::readString("\nEnter name: ");
-    newClient.phone          = helperFunctions::readString("\nEnter phone number: ");
-    newClient.accountBalance = helperFunctions::readPositiveNumber("\nEnter account balance: ");
+    newClient.accountNumber  = io_utils::readString("\nEnter account number: ");
+    newClient.pinCode        = io_utils::readString("\nEnter pin code: ");
+    newClient.name           = io_utils::readString("\nEnter name: ");
+    newClient.phone          = io_utils::readString("\nEnter phone number: ");
+    newClient.accountBalance = io_utils::readPositiveNumber("\nEnter account balance: ");
 
     return newClient;
 }
@@ -55,7 +56,7 @@ stClient readNewClient() {
 // Convert a line from file to a client struct
 stClient convertLineToRecord(string str, string separator = "#//#") {
     stClient newClient;
-    vector<string> vString = helperFunctions::splitString(str, separator);
+    vector<string> vString = string_utils::splitString(str, separator);
 
     newClient.accountNumber  = vString[0];
     newClient.pinCode        = vString[1];
