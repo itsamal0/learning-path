@@ -1,13 +1,13 @@
 #include <iostream>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
 using namespace std;
 
 /*
 ==================================================
-   Problem: Write a program to count letters in a string.
-            Count capital letters, small letters, and total letters.
-   From   : Programming Advices – Course 7
-   Date   : 2025-08-31
+   Problem: Write a program to count letters in a string.  
+            Count capital letters, small letters, and total letters.  
+   From   : Programming Advices – Course 7  
+   Date   : 2025-08-31  
 ==================================================
 */
 
@@ -33,8 +33,8 @@ short countLetters(string str, enWhatToCount whatToCount = enWhatToCount::All) {
 }
 
 int main() {
-    // Read string from user using helperFunctions
-    string str = helperFunctions::readString("Please enter your string ?");
+    // Read string from user using io_utils
+    string str = io_utils::readString("Please enter your string ?");
 
     cout << "\nString length = " << countLetters(str) << endl;
     cout << "Capital letters count = " << countLetters(str, enWhatToCount::CapitalLetters) << endl;
