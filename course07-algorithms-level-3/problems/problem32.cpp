@@ -1,5 +1,6 @@
 #include <iostream>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
+#include "../helpers/char_utils.h"
 using namespace std;
 
 /*
@@ -11,15 +12,13 @@ using namespace std;
 ==================================================
 */
 
-// Check if a character is a vowel
 bool isVowel(char letter) {
     letter = tolower(letter);
     return (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u');
 }
 
 int main() {
-    // Read character from user using helperFunctions
-    char letter = helperFunctions::readLetter("Please enter a character ?");
+    char letter = io_utils::readLetter("Please enter a character ? ");
 
     if (isVowel(letter)) {
         cout << "\nYes, letter '" << letter << "' is a vowel";
@@ -27,6 +26,5 @@ int main() {
         cout << "\nNo, letter '" << letter << "' is NOT a vowel";
     }
 
-    // Wait for user input before closing the console
     system("pause>0");
 }
