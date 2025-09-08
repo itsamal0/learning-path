@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -19,13 +19,13 @@ int main() {
     vector<string> vString = { "Kiyomi", "Dev" };
     string strArr[] = { "Kiyomi", "Dev" };
 
-    // Join vector using helperFunctions (overloaded function)
+    // Join vector using string_utils (overloaded function)
     cout << "\nVector after join:\n" 
-         << helperFunctions::joinString(vString, "#");
+         << string_utils::joinString(vString, "#");
 
-    // Join array using helperFunctions (overloaded function)
+    // Join array using string_utils (overloaded function)
     cout << "\nArray after join:\n" 
-         << helperFunctions::joinString(strArr, 2, "#");
+         << string_utils::joinString(strArr, 2, "#");
 
     // Wait for user input before closing
     system("pause>0");
