@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../helpers/helperFunctions.h"
+#include "../helpers/io_utils.h"
 using namespace std;
 
 /*
@@ -26,10 +26,10 @@ string replaceWordInStringUsingBuiltInFunction(string str, string targetWord, st
 }
 
 int main() {
-    // Read string and words from user
-    string str = helperFunctions::readString("\nPlease enter your text:");
-    string targetWord = helperFunctions::readString("\nEnter the word you want to replace:");
-    string replacementWord = helperFunctions::readString("\nEnter the replacement word:");
+    // Read string and words from user using io_utils
+    string str = io_utils::readString("\nPlease enter your text:");
+    string targetWord = io_utils::readString("\nEnter the word you want to replace:");
+    string replacementWord = io_utils::readString("\nEnter the replacement word:");
 
     cout << "\nOriginal string:\n" << str << endl;
 
