@@ -35,4 +35,12 @@ namespace io_utils {
         return c;
     }
 
+    void exitProgram() {
+        cout << "=================================\n";
+        cout << "          Program ends.\n";
+        cout << "=================================\n";
+        cout << "Press any key to close the program...";
+        system("pause >nul");
+    }
+
 }
