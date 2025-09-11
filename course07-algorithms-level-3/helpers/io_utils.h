@@ -7,4 +7,6 @@ namespace io_utils {
     int readPositiveNumber(const string& message);
     char readLetter(const string& message);
     void exitProgram();
+    bool isValidNumber();
+    bool isNumberInRange(int n, int minValue, int maxValue);
 }
