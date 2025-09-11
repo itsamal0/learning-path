@@ -10,6 +10,19 @@ namespace io_utils {
         getline(cin, str);
         return str;
     }
+    
+    bool isValidNumber() {
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return false;
+        }
+        return true;
+    }
+
+    bool isNumberInRange(int n, int minValue, int maxValue){
+        return n >= minValue && n <= maxValue;
+    }
 
     int readPositiveNumber(const string& message) {
         int num;
