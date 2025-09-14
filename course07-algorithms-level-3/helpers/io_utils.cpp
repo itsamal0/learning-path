@@ -1,4 +1,5 @@
 #include "io_utils.h"
+#include "string_utils.h"
 #include <iostream>
 #include <limits>
 using namespace std;
@@ -7,8 +8,18 @@ namespace io_utils {
 
     string readString(const string& message) {
         string str;
-        cout << message;
-        getline(cin, str);
+        do {
+
+            cout << message;
+            getline(cin, str);
+
+            str = string_utils::trim(str);
+            
+            if (str.empty()) 
+                cout << "Input cannot be empty, please try again.\n";
+
+        } while (str.empty());
+
         return str;
     }
     
