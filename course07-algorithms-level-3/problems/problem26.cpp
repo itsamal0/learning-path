@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../helpers/io_utils.h"
-#include "../helpers/string_utils.h"
+#include "../../helpers/io_utils.h"
+#include "../../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -11,7 +11,8 @@ using namespace std;
 ==================================================
 */
 
-int main() {
+int main()
+{
     // Read string from user using io_utils library
     string str = io_utils::readString("Please enter your string ? ");
 

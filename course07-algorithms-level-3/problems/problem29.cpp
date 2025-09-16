@@ -1,30 +1,40 @@
 #include <iostream>
-#include "../helpers/io_utils.h"
+#include "../../helpers/io_utils.h"
 using namespace std;
 
 /*
 ==================================================
-   Problem: Write a program to count letters in a string.  
-            Count capital letters, small letters, and total letters.  
-   From   : Programming Advices – Course 7  
-   Date   : 2025-08-31  
+   Problem: Write a program to count letters in a string.
+            Count capital letters, small letters, and total letters.
+   From   : Programming Advices – Course 7
+   Date   : 2025-08-31
 ==================================================
 */
 
-enum enWhatToCount { SmallLetters = 1, CapitalLetters = 2, All = 3 };
+enum enWhatToCount
+{
+    SmallLetters = 1,
+    CapitalLetters = 2,
+    All = 3
+};
 
 // Count letters based on the specified type
-short countLetters(string str, enWhatToCount whatToCount = enWhatToCount::All) {
-    if (whatToCount == enWhatToCount::All) {
+short countLetters(string str, enWhatToCount whatToCount = enWhatToCount::All)
+{
+    if (whatToCount == enWhatToCount::All)
+    {
         return str.length();
     }
 
     short counter = 0;
-    for (int i = 0; i < str.length(); i++) {
-        if (whatToCount == enWhatToCount::CapitalLetters && isupper(str[i])) {
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (whatToCount == enWhatToCount::CapitalLetters && isupper(str[i]))
+        {
             counter++;
         }
-        if (whatToCount == enWhatToCount::SmallLetters && islower(str[i])) {
+        if (whatToCount == enWhatToCount::SmallLetters && islower(str[i]))
+        {
             counter++;
         }
     }
@@ -32,7 +42,8 @@ short countLetters(string str, enWhatToCount whatToCount = enWhatToCount::All) {
     return counter;
 }
 
-int main() {
+int main()
+{
     // Read string from user using io_utils
     string str = io_utils::readString("Please enter your string ?");
 

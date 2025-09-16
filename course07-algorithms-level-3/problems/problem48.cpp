@@ -3,8 +3,8 @@
 #include <vector>
 #include <fstream>
 #include <iomanip>
-#include "../helpers/io_utils.h"
-#include "../helpers/string_utils.h"
+#include "../../helpers/io_utils.h"
+#include "../../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -19,7 +19,8 @@ using namespace std;
 const string clientsFileName = "clients.txt";
 
 // Client structure
-struct stClient {
+struct stClient
+{
     string accountNumber;
     string pinCode;
     string name;
@@ -28,7 +29,8 @@ struct stClient {
 };
 
 // Convert a client struct to a single line string
-string convertRecordToLine(stClient client, string separator = "#//#") {
+string convertRecordToLine(stClient client, string separator = "#//#")
+{
     string stClientRecord = "";
 
     stClientRecord += client.accountNumber + separator;
@@ -41,41 +43,46 @@ string convertRecordToLine(stClient client, string separator = "#//#") {
 }
 
 // Read client data from user
-stClient readNewClient() {
+stClient readNewClient()
+{
     stClient newClient;
 
-    newClient.accountNumber  = io_utils::readString("\nEnter account number: ");
-    newClient.pinCode        = io_utils::readString("\nEnter pin code: ");
-    newClient.name           = io_utils::readString("\nEnter name: ");
-    newClient.phone          = io_utils::readString("\nEnter phone number: ");
+    newClient.accountNumber = io_utils::readString("\nEnter account number: ");
+    newClient.pinCode = io_utils::readString("\nEnter pin code: ");
+    newClient.name = io_utils::readString("\nEnter name: ");
+    newClient.phone = io_utils::readString("\nEnter phone number: ");
     newClient.accountBalance = io_utils::readPositiveNumber("\nEnter account balance: ");
 
     return newClient;
 }
 
 // Convert a line from file to a client struct
-stClient convertLineToRecord(string str, string separator = "#//#") {
+stClient convertLineToRecord(string str, string separator = "#//#")
+{
     stClient newClient;
     vector<string> vString = string_utils::splitString(str, separator);
 
-    newClient.accountNumber  = vString[0];
-    newClient.pinCode        = vString[1];
-    newClient.name           = vString[2];
-    newClient.phone          = vString[3];
+    newClient.accountNumber = vString[0];
+    newClient.pinCode = vString[1];
+    newClient.name = vString[2];
+    newClient.phone = vString[3];
     newClient.accountBalance = stod(vString[4]);
 
     return newClient;
 }
 
 // Load clients data from file into a vector
-vector<stClient> loadClientsDataFromFile(string fileName) {
+vector<stClient> loadClientsDataFromFile(string fileName)
+{
     vector<stClient> vClients;
     fstream myFile;
     myFile.open(fileName, ios::in);
 
-    if (myFile.is_open()) {
+    if (myFile.is_open())
+    {
         string line;
-        while (getline(myFile, line)) {
+        while (getline(myFile, line))
+        {
             vClients.push_back(convertLineToRecord(line));
         }
         myFile.close();
@@ -85,17 +92,19 @@ vector<stClient> loadClientsDataFromFile(string fileName) {
 }
 
 // Print a single client record
-void printClientRecord(stClient client) {
-    cout << "| " << setw(16) << left  << client.accountNumber;
-    cout << "| " << setw(10) << left  << client.pinCode;
-    cout << "| " << setw(20) << left  << client.name;
-    cout << "| " << setw(15) << left  << client.phone;
+void printClientRecord(stClient client)
+{
+    cout << "| " << setw(16) << left << client.accountNumber;
+    cout << "| " << setw(10) << left << client.pinCode;
+    cout << "| " << setw(20) << left << client.name;
+    cout << "| " << setw(15) << left << client.phone;
     cout << "| " << setw(10) << right << fixed << client.accountBalance;
     cout << endl;
 }
 
 // Print all clients in a formatted table
-void printAllClientsData(vector<stClient>& vClients) {
+void printAllClientsData(vector<stClient> &vClients)
+{
     cout << "\n\t\t\t\t\t\tClient list (" << vClients.size() << ") client(s).\n";
 
     cout << "\n| " << setw(16) << left << "Account Number";
@@ -103,16 +112,19 @@ void printAllClientsData(vector<stClient>& vClients) {
     cout << "| " << setw(20) << left << "Client Name";
     cout << "| " << setw(15) << left << "Phone";
     cout << "| " << setw(10) << right << "Balance";
-    cout << "\n" << string(100, '_') << "\n\n";
+    cout << "\n"
+         << string(100, '_') << "\n\n";
 
-    for (stClient& client : vClients) {
+    for (stClient &client : vClients)
+    {
         printClientRecord(client);
         cout << endl;
     }
 }
 
 // Main function
-int main() {
+int main()
+{
     // Load clients from file
     vector<stClient> vClients = loadClientsDataFromFile(clientsFileName);
 

@@ -2,13 +2,13 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "../helpers/io_utils.h"
-#include "../helpers/string_utils.h"
+#include "../../helpers/io_utils.h"
+#include "../../helpers/string_utils.h"
 using namespace std;
 
 /*
 ==================================================
-   Problem : Delete a client by account number 
+   Problem : Delete a client by account number
              from file storage
    From    : Programming Advices – Course 7
    Date    : 2025-09-01
@@ -18,7 +18,8 @@ using namespace std;
 const string clientsFileName = "clients.txt";
 
 // Client structure
-struct stClient {
+struct stClient
+{
     string accountNumber;
     string pinCode;
     string name;
@@ -28,27 +29,31 @@ struct stClient {
 };
 
 // Convert a line from file to a client struct
-stClient convertLineToRecord(const string& str, const string& separator = "#//#") {
+stClient convertLineToRecord(const string &str, const string &separator = "#//#")
+{
     stClient newClient;
     vector<string> vString = string_utils::splitString(str, separator);
 
-    newClient.accountNumber  = vString[0];
-    newClient.pinCode        = vString[1];
-    newClient.name           = vString[2];
-    newClient.phone          = vString[3];
+    newClient.accountNumber = vString[0];
+    newClient.pinCode = vString[1];
+    newClient.name = vString[2];
+    newClient.phone = vString[3];
     newClient.accountBalance = stod(vString[4]);
 
     return newClient;
 }
 
 // Load all clients from file
-vector<stClient> loadClientsDataFromFile(const string& fileName) {
+vector<stClient> loadClientsDataFromFile(const string &fileName)
+{
     vector<stClient> vClients;
     fstream myFile(fileName, ios::in);
 
-    if (myFile.is_open()) {
+    if (myFile.is_open())
+    {
         string line;
-        while (getline(myFile, line)) {
+        while (getline(myFile, line))
+        {
             vClients.push_back(convertLineToRecord(line));
         }
         myFile.close();
@@ -58,7 +63,8 @@ vector<stClient> loadClientsDataFromFile(const string& fileName) {
 }
 
 // Print a single client record
-void printClientRecord(const stClient& client) {
+void printClientRecord(const stClient &client)
+{
     cout << "\nThe following are the account details:\n";
     cout << "\nAccount Number : " << client.accountNumber;
     cout << "\nPin Code       : " << client.pinCode;
@@ -68,9 +74,12 @@ void printClientRecord(const stClient& client) {
 }
 
 // Find a client by account number
-bool findClientByAccountNumber(const string& accountNumber, const vector<stClient>& vClients, stClient& client) {
-    for (const stClient& c : vClients) {
-        if (c.accountNumber == accountNumber) {
+bool findClientByAccountNumber(const string &accountNumber, const vector<stClient> &vClients, stClient &client)
+{
+    for (const stClient &c : vClients)
+    {
+        if (c.accountNumber == accountNumber)
+        {
             client = c;
             return true;
         }
@@ -79,7 +88,8 @@ bool findClientByAccountNumber(const string& accountNumber, const vector<stClien
 }
 
 // Convert a client struct to a line for saving
-string convertRecordToLine(const stClient& client, const string& separator = "#//#") {
+string convertRecordToLine(const stClient &client, const string &separator = "#//#")
+{
     string record = "";
 
     record += client.accountNumber + separator;
@@ -92,9 +102,12 @@ string convertRecordToLine(const stClient& client, const string& separator = "#/
 }
 
 // Mark a client for deletion
-bool markClientForDeleteByAccountNumber(const string& accountNumber, vector<stClient>& vClients) {
-    for (stClient& c : vClients) {
-        if (c.accountNumber == accountNumber) {
+bool markClientForDeleteByAccountNumber(const string &accountNumber, vector<stClient> &vClients)
+{
+    for (stClient &c : vClients)
+    {
+        if (c.accountNumber == accountNumber)
+        {
             c.markForDelete = true;
             return true;
         }
@@ -103,12 +116,16 @@ bool markClientForDeleteByAccountNumber(const string& accountNumber, vector<stCl
 }
 
 // Save all clients back to file
-vector<stClient> saveClientsDataToFile(const string& fileName, const vector<stClient>& vClients) {
+vector<stClient> saveClientsDataToFile(const string &fileName, const vector<stClient> &vClients)
+{
     fstream myFile(fileName, ios::out);
 
-    if (myFile.is_open()) {
-        for (const stClient& c : vClients) {
-            if (!c.markForDelete) {
+    if (myFile.is_open())
+    {
+        for (const stClient &c : vClients)
+        {
+            if (!c.markForDelete)
+            {
                 myFile << convertRecordToLine(c) << endl;
             }
         }
@@ -119,17 +136,20 @@ vector<stClient> saveClientsDataToFile(const string& fileName, const vector<stCl
 }
 
 // Delete a client by account number
-bool deleteClientByAccountNumber(const string& accountNumber, vector<stClient>& vClients) {
+bool deleteClientByAccountNumber(const string &accountNumber, vector<stClient> &vClients)
+{
     stClient client;
     char answer = 'n';
 
-    if (findClientByAccountNumber(accountNumber, vClients, client)) {
+    if (findClientByAccountNumber(accountNumber, vClients, client))
+    {
         printClientRecord(client);
 
         cout << "\n\nAre you sure you want to delete this client? (y/n): ";
         cin >> answer;
 
-        if (toupper(answer) == 'Y') {
+        if (toupper(answer) == 'Y')
+        {
             markClientForDeleteByAccountNumber(accountNumber, vClients);
             saveClientsDataToFile(clientsFileName, vClients);
 
@@ -137,15 +157,17 @@ bool deleteClientByAccountNumber(const string& accountNumber, vector<stClient>& 
             cout << "\n\nClient deleted successfully.\n";
             return true;
         }
-    } else {
+    }
+    else
+    {
         cout << "\nClient with account number (" << accountNumber << ") is NOT found!";
     }
 
     return false;
 }
 
-
-int main() {
+int main()
+{
     // Read account number from user
     vector<stClient> vClients = loadClientsDataFromFile(clientsFileName);
 

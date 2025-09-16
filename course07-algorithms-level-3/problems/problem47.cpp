@@ -3,9 +3,8 @@
 #include <vector>
 #include <fstream>
 #include <limits>
-#include "../helpers/io_utils.h"
+#include "../../helpers/io_utils.h"
 using namespace std;
-
 
 /*
 ==================================================
@@ -18,7 +17,8 @@ using namespace std;
 
 const string clientsFileName = "clients.txt";
 
-struct stClient {
+struct stClient
+{
     string accountNumber;
     string pinCode;
     string name;
@@ -27,7 +27,8 @@ struct stClient {
 };
 
 // Convert a client struct to a single line string with separator
-string convertRecordToLine(stClient client, string separator = "#//#") {
+string convertRecordToLine(stClient client, string separator = "#//#")
+{
     string stClientRecord = "";
     stClientRecord += client.accountNumber + separator;
     stClientRecord += client.pinCode + separator;
@@ -38,42 +39,50 @@ string convertRecordToLine(stClient client, string separator = "#//#") {
 }
 
 // Read new client data from user
-stClient readNewClient() {
+stClient readNewClient()
+{
     stClient newClient;
 
-    newClient.accountNumber   = io_utils::readString("\nEnter account number: ");
-    newClient.pinCode         = io_utils::readString("\nEnter pin code: ");
-    newClient.name            = io_utils::readString("\nEnter name: ");
-    newClient.phone           = io_utils::readString("\nEnter phone number: ");
-    newClient.accountBalance  = io_utils::readPositiveNumber("\nEnter account balance: ");
+    newClient.accountNumber = io_utils::readString("\nEnter account number: ");
+    newClient.pinCode = io_utils::readString("\nEnter pin code: ");
+    newClient.name = io_utils::readString("\nEnter name: ");
+    newClient.phone = io_utils::readString("\nEnter phone number: ");
+    newClient.accountBalance = io_utils::readPositiveNumber("\nEnter account balance: ");
 
     return newClient;
 }
 
 // Add a single line of data to a file
-void addDataLineToFile(const string& fileName, const string& stDataLine) {
+void addDataLineToFile(const string &fileName, const string &stDataLine)
+{
     fstream myFile;
     myFile.open(fileName, ios::out | ios::app);
 
-    if (myFile.is_open()) {
+    if (myFile.is_open())
+    {
         myFile << stDataLine << endl;
         myFile.close();
-    } else {
+    }
+    else
+    {
         cout << "\nError: Unable to open file " << fileName << endl;
     }
 }
 
 // Add a new client and save to file
-void addNewClient() {
+void addNewClient()
+{
     stClient client = readNewClient();
     addDataLineToFile(clientsFileName, convertRecordToLine(client));
 }
 
 // Loop to add multiple clients
-void addClients() {
+void addClients()
+{
     char addMore = 'Y';
 
-    do {
+    do
+    {
         system("cls");
         cout << "\nAdding new clients:\n\n";
 
@@ -86,7 +95,8 @@ void addClients() {
     } while (toupper(addMore) == 'Y');
 }
 
-int main() {
+int main()
+{
     addClients();
 
     // Wait for user input before closing

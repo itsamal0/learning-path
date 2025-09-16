@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "../helpers/io_utils.h"
-#include "../helpers/string_utils.h"
+#include "../../helpers/io_utils.h"
+#include "../../helpers/string_utils.h"
 using namespace std;
 
 /*
@@ -18,7 +18,8 @@ using namespace std;
 const string clientsFileName = "clients.txt";
 
 // Client structure
-struct stClient {
+struct stClient
+{
     string accountNumber;
     string pinCode;
     string name;
@@ -28,27 +29,31 @@ struct stClient {
 };
 
 // Convert a line from file to a client struct
-stClient convertLineToRecord(const string& str, const string& separator = "#//#") {
+stClient convertLineToRecord(const string &str, const string &separator = "#//#")
+{
     stClient newClient;
     vector<string> vString = string_utils::splitString(str, separator);
 
-    newClient.accountNumber  = vString[0];
-    newClient.pinCode        = vString[1];
-    newClient.name           = vString[2];
-    newClient.phone          = vString[3];
+    newClient.accountNumber = vString[0];
+    newClient.pinCode = vString[1];
+    newClient.name = vString[2];
+    newClient.phone = vString[3];
     newClient.accountBalance = stod(vString[4]);
 
     return newClient;
 }
 
 // Load all clients from file
-vector<stClient> loadClientsDataFromFile(const string& fileName) {
+vector<stClient> loadClientsDataFromFile(const string &fileName)
+{
     vector<stClient> vClients;
     fstream myFile(fileName, ios::in);
 
-    if (myFile.is_open()) {
+    if (myFile.is_open())
+    {
         string line;
-        while (getline(myFile, line)) {
+        while (getline(myFile, line))
+        {
             vClients.push_back(convertLineToRecord(line));
         }
         myFile.close();
@@ -58,7 +63,8 @@ vector<stClient> loadClientsDataFromFile(const string& fileName) {
 }
 
 // Print a single client record
-void printClientRecord(const stClient& client) {
+void printClientRecord(const stClient &client)
+{
     cout << "\nThe following are the account details:\n";
     cout << "\nAccount Number : " << client.accountNumber;
     cout << "\nPin Code       : " << client.pinCode;
@@ -68,9 +74,12 @@ void printClientRecord(const stClient& client) {
 }
 
 // Find a client by account number
-bool findClientByAccountNumber(const string& accountNumber, const vector<stClient>& vClients, stClient& client) {
-    for (const stClient& c : vClients) {
-        if (c.accountNumber == accountNumber) {
+bool findClientByAccountNumber(const string &accountNumber, const vector<stClient> &vClients, stClient &client)
+{
+    for (const stClient &c : vClients)
+    {
+        if (c.accountNumber == accountNumber)
+        {
             client = c;
             return true;
         }
@@ -79,7 +88,8 @@ bool findClientByAccountNumber(const string& accountNumber, const vector<stClien
 }
 
 // Convert a client struct to a line for saving
-string convertRecordToLine(const stClient& client, const string& separator = "#//#") {
+string convertRecordToLine(const stClient &client, const string &separator = "#//#")
+{
     string record = "";
 
     record += client.accountNumber + separator;
@@ -92,11 +102,14 @@ string convertRecordToLine(const stClient& client, const string& separator = "#/
 }
 
 // Save all clients back to file
-vector<stClient> saveClientsDataToFile(const string& fileName, const vector<stClient>& vClients) {
+vector<stClient> saveClientsDataToFile(const string &fileName, const vector<stClient> &vClients)
+{
     fstream myFile(fileName, ios::out);
 
-    if (myFile.is_open()) {
-        for (const stClient& c : vClients) {
+    if (myFile.is_open())
+    {
+        for (const stClient &c : vClients)
+        {
             myFile << convertRecordToLine(c) << endl;
         }
         myFile.close();
@@ -106,18 +119,21 @@ vector<stClient> saveClientsDataToFile(const string& fileName, const vector<stCl
 }
 
 // Update a client by account number
-bool updateClientByAccountNumber(const string& accountNumber, vector<stClient>& vClients) {
+bool updateClientByAccountNumber(const string &accountNumber, vector<stClient> &vClients)
+{
     stClient client;
     char answer = 'n';
 
-    if (findClientByAccountNumber(accountNumber, vClients, client)) {
+    if (findClientByAccountNumber(accountNumber, vClients, client))
+    {
         printClientRecord(client);
 
         cout << "\n\nAre you sure you want to update this client? (y/n): ";
         cin >> answer;
 
-        if (toupper(answer) == 'Y') {
-	    // Clear input buffer
+        if (toupper(answer) == 'Y')
+        {
+            // Clear input buffer
             cin.ignore(1000, '\n');
 
             stClient updatedClient;
@@ -128,8 +144,10 @@ bool updateClientByAccountNumber(const string& accountNumber, vector<stClient>& 
             updatedClient.accountBalance = io_utils::readPositiveNumber("\nEnter new account balance: ");
 
             // Update the client in the vector
-            for (stClient& c : vClients) {
-                if (c.accountNumber == accountNumber) {
+            for (stClient &c : vClients)
+            {
+                if (c.accountNumber == accountNumber)
+                {
                     c = updatedClient;
                     break;
                 }
@@ -140,15 +158,17 @@ bool updateClientByAccountNumber(const string& accountNumber, vector<stClient>& 
             cout << "\n\nClient updated successfully.\n";
             return true;
         }
-    } else {
+    }
+    else
+    {
         cout << "\nClient with account number (" << accountNumber << ") is NOT found!";
     }
 
     return false;
 }
 
-
-int main() {
+int main()
+{
     // Load clients from file
     vector<stClient> vClients = loadClientsDataFromFile(clientsFileName);
 

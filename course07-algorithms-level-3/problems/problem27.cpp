@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../helpers/io_utils.h"
-#include "../helpers/char_utils.h"
+#include "../../helpers/io_utils.h"
+#include "../../helpers/char_utils.h"
 using namespace std;
 
 /*
@@ -11,7 +11,8 @@ using namespace std;
 ==================================================
 */
 
-int main() {
+int main()
+{
     // Read a character from user using io_utils
     char c = io_utils::readLetter("Please enter a character ? ");
 
