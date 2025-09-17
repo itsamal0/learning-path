@@ -120,5 +120,7 @@ int main() {
 
   cout << numberToText(n) << endl;
 
+  system("pause>0");
+  
   return 0;
 }
