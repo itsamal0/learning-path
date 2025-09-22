@@ -78,6 +78,12 @@ const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
         return Date;
     }
 
+    void printDate(const stDate& Date, string message) {
+    if (!message.empty())
+        cout << message;
+    cout << Date.Day << "/" << Date.Month << "/" << Date.Year << endl;
+}
+
     // Conversion
     stDate dateAddDays(short days, short year) {
         stDate Date;
@@ -103,22 +109,107 @@ const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
         return dateAddDays(daysOrderInYear, year);
     }
 
-    // Increment
-    stDate increaseDateByOneDay(stDate& Date) {
+    // ==== Increment ====
+    stDate increaseDateByOneDay(stDate Date) {
         if (isLastDayInMonth(Date) && isLastMonthInYear(Date.Month)) {
             Date.Day = 1;
             Date.Month = 1;
             Date.Year++;
-            return Date;
         }
-        if (isLastDayInMonth(Date)) {
-        Date.Day = 1;
-        Date.Month++;
-        } else {
+        else if (isLastDayInMonth(Date)) {
+            Date.Day = 1;
+            Date.Month++;
+        }
+        else {
             Date.Day++;
         }
         return Date;
     }
+
+    stDate increaseDateByXDays(stDate Date, short days) {
+        for (short i = 0; i < days; i++) {
+            Date = increaseDateByOneDay(Date);
+        }
+        return Date;
+    }
+
+    stDate increaseDateByOneWeek(stDate Date) {
+        return increaseDateByXDays(Date, 7);
+    }
+
+    stDate increaseDateByXWeeks(stDate Date, short weeks) {
+        for (short i = 0; i < weeks; i++) {
+            Date = increaseDateByOneWeek(Date);
+        }
+        return Date;
+    }
+
+    stDate increaseDateByOneMonth(stDate Date) {
+        if (Date.Month == 12) {
+            Date.Month = 1;
+            Date.Year++;
+        } else {
+            Date.Month++;
+        }
+
+        short numberOfDaysInMonth = getDaysInMonth(Date.Year, Date.Month);
+        if (Date.Day > numberOfDaysInMonth) {
+            Date.Day = numberOfDaysInMonth;
+        }
+        return Date;
+    }
+
+    stDate increaseDateByXMonths(stDate Date, short months) {
+        for (short i = 0; i < months; i++) {
+            Date = increaseDateByOneMonth(Date);
+        }
+        return Date;
+    }
+
+    stDate increaseDateByOneYear(stDate Date) {
+        Date.Year++;
+        return Date;
+    }
+
+    stDate increaseDateByXYears(stDate Date, short years) {
+        for (short i = 0; i < years; i++) {
+            Date = increaseDateByOneYear(Date);
+        }
+        return Date;
+    }
+
+    stDate increaseDateByXYearsFaster(stDate Date, short years) {
+        Date.Year += years;
+        return Date;
+    }
+
+    stDate increaseDateByOneDecade(stDate Date) {
+        Date.Year += 10;
+        return Date;
+    }
+
+    stDate increaseDateByXDecades(stDate Date, short decades) {
+        for (short i = 0; i < decades * 10; i++) {
+            Date = increaseDateByOneYear(Date);
+        }
+        return Date;
+    }
+
+    stDate increaseDateByDecadesFaster(stDate Date, short decades) {
+        Date.Year += decades * 10;
+        return Date;
+    }
+
+    stDate increaseDateByOneCentury(stDate Date) {
+        Date.Year += 100;
+        return Date;
+    }
+
+    stDate increaseDateByOneMillennium(stDate Date) {
+        Date.Year += 1000;
+        return Date;
+    }
+
 
     // Comparison
     bool isDate1BeforeDate2(const stDate& Date1, const stDate& Date2) {

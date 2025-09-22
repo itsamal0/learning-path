@@ -31,13 +31,27 @@ namespace date_utils {
 
     // Input / Output
     stDate readFullDate();
+    void printDate(const stDate& Date, std::string message);
 
     // Conversion
     stDate dateAddDays(short days, short year);
     stDate convertDaysToDate(short daysOrderInYear, short year);
 
     // Increment
-    stDate increaseDateByOneDay(stDate& Date);
+    stDate increaseDateByOneDay(stDate Date);
+    stDate increaseDateByXDays(stDate Date, short days = 10);
+    stDate increaseDateByOneWeek(stDate Date);
+    stDate increaseDateByXWeeks(stDate Date, short weeks = 10);
+    stDate increaseDateByOneMonth(stDate Date);
+    stDate increaseDateByXMonths(stDate Date, short months = 5);
+    stDate increaseDateByOneYear(stDate Date);
+    stDate increaseDateByXYears(stDate Date, short years = 10);
+    stDate increaseDateByXYearsFaster(stDate Date, short years = 10);
+    stDate increaseDateByOneDecade(stDate Date);
+    stDate increaseDateByXDecades(stDate Date, short decade = 10);
+    stDate increaseDateByDecadesFaster(stDate Date, short decade = 10);
+    stDate increaseDateByOneCentury(stDate Date);
+    stDate increaseDateByOneMillennium(stDate Date);
 
     // Comparison
     bool isDate1BeforeDate2(const stDate& Date1, const stDate& Date2);
