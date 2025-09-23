@@ -25,6 +25,7 @@ namespace date_utils {
 
     // ==== Week Functions ====
     short getDayOfWeekOrder(short year, short month, short day);
+    short getDayOfWeekOrder(stDate Date);
     std::string getDayShortName(short day);
 
     // ==== Date Functions ====

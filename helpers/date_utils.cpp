@@ -62,6 +62,12 @@ const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
         return (day + year + (year / 4) - (year / 100) + (year / 400) + (31 * month / 12)) % 7;
     }
 
+    // ==== problem47 ====
+    // Overloaded getDayOfWeekOrder: Accepts a stDate structure
+    short getDayOfWeekOrder(stDate Date) {
+        return getDayOfWeekOrder(Date.Year, Date.Month, Date.Day);
+    }
+
     string getDayShortName(short day) {
         string days[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
         return days[day];
