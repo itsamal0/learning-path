@@ -28,6 +28,14 @@ namespace date_utils {
     short getDayOfWeekOrder(stDate Date);
     std::string getDayShortName(short day);
 
+    // ==== Week / Day Utilities ====
+    bool isEndOfWeek(short dayOrderInWeek);
+    bool isWeekEnd(short dayOrderInWeek);
+    bool isBusinessDay(short dayOrderInWeek);
+    short daysUntilTheEndOfWeek(short dayOrderInWeek);
+    short daysUntilTheEndOfMonth(stDate Date);
+    short daysUntilTheEndOfYear(stDate Date);
+
     // ==== Date Functions ====
 
     // Input / Output

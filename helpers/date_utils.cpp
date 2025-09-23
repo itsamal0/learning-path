@@ -73,6 +73,37 @@ const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
         return days[day];
     }
 
+    // ==== Week / Day Utilities ====
+
+    // Check if the day is the end of the week (Saturday)
+    bool isEndOfWeek(short dayOrderInWeek) { 
+        return dayOrderInWeek == 6; 
+    }
+
+    // Check if the day is a weekend (Saturday or Sunday)
+    bool isWeekEnd(short dayOrderInWeek) { 
+        return dayOrderInWeek == 0 || dayOrderInWeek == 6; 
+    } 
+
+    // Check if the day is a business day (not Saturday or Sunday)
+    bool isBusinessDay(short dayOrderInWeek) { 
+        return !isWeekEnd(dayOrderInWeek); 
+    } 
+
+    // Days remaining until the end of the week (Saturday)
+    short daysUntilTheEndOfWeek(short dayOrderInWeek) { 
+        return 6 - dayOrderInWeek; 
+    } 
+
+    short daysUntilTheEndOfMonth(stDate Date) { 
+        return getDaysInMonth(Date.Year, Date.Month) - Date.Day; 
+    } 
+
+    short daysUntilTheEndOfYear(stDate Date) { 
+        return getDaysInYear(Date.Year) - countDaysFromYearStart(Date.Day, Date.Month, Date.Year); 
+    }
+
+
     // ==== Date Functions ====
 
     // Input / Output
