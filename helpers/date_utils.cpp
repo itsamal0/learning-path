@@ -210,6 +210,107 @@ const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
         return Date;
     }
 
+    // ==== Decrement ====
+    stDate decreaseDateByOneDay(stDate Date) {
+        if (Date.Day == 1) {
+            if (Date.Month == 1) {
+                Date.Month = 12;
+                Date.Year--;
+            } else {
+                Date.Month--;
+            }
+            Date.Day = getDaysInMonth(Date.Year, Date.Month);
+        } else {
+            Date.Day--;
+        }
+
+        return Date;
+    }
+
+    stDate decreaseDateByXDays(stDate Date, short days) {
+        for (short i = 0; i < days; i++) {
+            Date = decreaseDateByOneDay(Date);
+        }
+        return Date;
+    }
+
+    stDate decreaseDateByOneWeek(stDate Date) {
+        return decreaseDateByXDays(Date, 7);
+    }
+
+    stDate decreaseDateByXWeeks(stDate Date, short weeks) {
+        for (short i = 0; i < weeks; i++) {
+            Date = decreaseDateByOneWeek(Date);
+        }
+        return Date;
+    }
+
+    stDate decreaseDateByOneMonth(stDate Date) {
+        if (Date.Month == 1) {
+            Date.Month = 12;
+            Date.Year--;
+        } else {
+            Date.Month--;
+        }
+
+        short numberOfDaysInMonth = getDaysInMonth(Date.Year, Date.Month);
+        if (Date.Day > numberOfDaysInMonth) {
+            Date.Day = numberOfDaysInMonth;
+        }
+        return Date;
+    }
+
+    stDate decreaseDateByXMonths(stDate Date, short months) {
+        for (short i = 0; i < months; i++) {
+            Date = decreaseDateByOneMonth(Date);
+        }
+        return Date;
+    }
+
+    stDate decreaseDateByOneYear(stDate Date) {
+        Date.Year--;
+        return Date;
+    }
+
+    stDate decreaseDateByXYears(stDate Date, short years) {
+        for (short i = 0; i < years; i++) {
+            Date = decreaseDateByOneYear(Date);
+        }
+        return Date;
+    }
+
+    stDate decreaseDateByXYearsFaster(stDate Date, short years) {
+        Date.Year -= years;
+        return Date;
+    }
+
+    stDate decreaseDateByOneDecade(stDate Date) {
+        Date.Year -= 10;
+        return Date;
+    }
+
+    stDate decreaseDateByXDecades(stDate Date, short decades) {
+        for (short i = 0; i < decades * 10; i++) {
+            Date = decreaseDateByOneYear(Date);
+        }
+        return Date;
+    }
+
+    stDate decreaseDateByDecadesFaster(stDate Date, short decades) {
+        Date.Year -= decades * 10;
+        return Date;
+    }
+
+    stDate decreaseDateByOneCentury(stDate Date) {
+        Date.Year -= 100;
+        return Date;
+    }
+
+    stDate decreaseDateByOneMillennium(stDate Date) {
+        Date.Year -= 1000;
+        return Date;
+    }
+
 
     // Comparison
     bool isDate1BeforeDate2(const stDate& Date1, const stDate& Date2) {

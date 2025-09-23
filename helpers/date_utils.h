@@ -53,6 +53,22 @@ namespace date_utils {
     stDate increaseDateByOneCentury(stDate Date);
     stDate increaseDateByOneMillennium(stDate Date);
 
+    // Decrement
+    stDate decreaseDateByOneDay(stDate Date);
+    stDate decreaseDateByXDays(stDate Date, short days = 10);
+    stDate decreaseDateByOneWeek(stDate Date);
+    stDate decreaseDateByXWeeks(stDate Date, short weeks = 10);
+    stDate decreaseDateByOneMonth(stDate Date);
+    stDate decreaseDateByXMonths(stDate Date, short months = 5);
+    stDate decreaseDateByOneYear(stDate Date);
+    stDate decreaseDateByXYears(stDate Date, short years = 10);
+    stDate decreaseDateByXYearsFaster(stDate Date, short years = 10);
+    stDate decreaseDateByOneDecade(stDate Date);
+    stDate decreaseDateByXDecades(stDate Date, short decade = 10);
+    stDate decreaseDateByDecadesFaster(stDate Date, short decade = 10);
+    stDate decreaseDateByOneCentury(stDate Date);
+    stDate decreaseDateByOneMillennium(stDate Date);
+
     // Comparison
     bool isDate1BeforeDate2(const stDate& Date1, const stDate& Date2);
     bool isDate1EqualDate2(const stDate& Date1, const stDate& Date2);
