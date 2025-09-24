@@ -51,7 +51,10 @@ int main() {
     short dayOfWeekOrderOfDateTo = date_utils::getDayOfWeekOrder(DateTo);
 
     cout << "\nVacation from: " << date_utils::getDayShortName(dayOfWeekOrderOfDateFrom);
+    date_utils::printDate(DateFrom, ", ");
+
     cout << "\nVacation to: " << date_utils::getDayShortName(dayOfWeekOrderOfDateTo);
+    date_utils::printDate(DateTo, ", ");
 
     cout << "\n\nActucal vacation days is: " << calculateVacationDays(DateFrom, DateTo) << endl;
 
