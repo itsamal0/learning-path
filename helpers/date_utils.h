@@ -1,10 +1,17 @@
 #pragma once
 #include <string>
 
+enum enCompareTwoDates { BEFORE = -1, EQUAL = 0, AFTER = 1 };
+
 struct stDate {
     short Day;
     short Month;
     short Year;
+};
+
+struct stPeriod {
+    stDate StartDate;
+    stDate EndDate;
 };
 
 namespace date_utils {
@@ -81,6 +88,13 @@ namespace date_utils {
     // Comparison
     bool isDate1BeforeDate2(const stDate& Date1, const stDate& Date2);
     bool isDate1EqualDate2(const stDate& Date1, const stDate& Date2);
+    bool isDate1AfterDate2(const stDate& Date1, const stDate& Date2);
+    enCompareTwoDates compareTwoDates(stDate Date1, stDate Date2);
+
+    // ==== Period / Date Ranges ====
+    short periodLengthInDays(stPeriod Period1, bool includeEndDay = false);
+    bool isOverlapPeriods(stPeriod Period1, stPeriod Period2);
+    bool isDateWithinPeriod(stPeriod Period, stDate Date);
 
     // Helpers
     bool isLastDayInMonth(stDate& Date);

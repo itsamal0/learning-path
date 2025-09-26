@@ -4,9 +4,9 @@
 using namespace std;
 
 namespace date_utils {
-
-// ==== Constants ====
-const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
+    
+    // ==== Constants ====
+    const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
 
     // ==== Year Functions ====
     bool isLeapYear(int year) {
@@ -119,7 +119,7 @@ const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
     if (!message.empty())
         cout << message;
     cout << Date.Day << "/" << Date.Month << "/" << Date.Year << endl;
-}
+    }
 
     // Conversion
     stDate dateAddDays(short days, short year) {
@@ -358,6 +358,38 @@ const short MONTHS_31[7] = {1, 3, 5, 7, 8, 10, 12};
 
     bool isDate1EqualDate2(const stDate& Date1, const stDate& Date2) {
         return (Date1.Year == Date2.Year && Date1.Month == Date2.Month && Date1.Day == Date2.Day);
+    }
+
+    bool isDate1AfterDate2(const stDate& Date1, const stDate& Date2) {
+        return (!isDate1BeforeDate2(Date1, Date2) && !isDate1EqualDate2(Date1, Date2));
+    }
+
+    enCompareTwoDates compareTwoDates(stDate Date1, stDate Date2) {
+        if (isDate1BeforeDate2(Date1, Date2)) 
+            return enCompareTwoDates::BEFORE;
+
+        if (isDate1EqualDate2(Date1, Date2))
+            return enCompareTwoDates::EQUAL;
+
+        return enCompareTwoDates::AFTER;
+    }
+
+    // ==== Period / Date Ranges ====
+    short periodLengthInDays(stPeriod Period1, bool includeEndDay) {
+        return getDifferenceInDays(Period1.StartDate, Period1.EndDate, includeEndDay);
+    }
+
+    bool isOverlapPeriods(stPeriod Period1, stPeriod Period2) {
+        if(compareTwoDates(Period2.EndDate, Period1.StartDate) == enCompareTwoDates::BEFORE
+            || compareTwoDates(Period2.StartDate, Period1.EndDate) == enCompareTwoDates::AFTER)
+            return false;
+
+        return true;
+    }
+
+    bool isDateWithinPeriod(stPeriod Period, stDate Date) {
+        return (!isDate1BeforeDate2(Date, Period.StartDate)
+                && !isDate1AfterDate2(Date, Period.EndDate));
     }
 
     // Helpers
