@@ -29,9 +29,16 @@ Main projects of this course:
    cd course07-algorithms-level-3/problems
    ```
 3. Compile any problem using g++ (replace `problem01.cpp` with the file you want):
-   ```bash
-   g++ problem01.cpp -o problem01
-   ```
+
+   * **If the problem does NOT use helpers:**
+     ```bash
+     g++ problem01.cpp -o problem01
+     ```
+   * **If the problem uses helpers:**
+     ```bash
+     g++ problem01.cpp ../../helpers/*.cpp -I ../../helpers -o problem01
+     ```
+
 4. Run the compiled program:
    ```bash
    ./problem01
