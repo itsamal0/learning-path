@@ -13,7 +13,7 @@ This file documents my progress through a structured **25-course roadmap** from 
 | 05  | Algorithms Level 2 | ✅ Completed | [Rock–Paper–Scissors](./course05-algorithms-level-2/projects/rock-paper-scissors)<br>[Math Quiz Game](./course05-algorithms-level-2/projects/math-quiz-game) |
 | 06  | C++ Level 2 | ✅ Completed | — |
 | 07  | Algorithms Level 3 | ✅ Completed | [Bank System](https://github.com/itsamal0/bank_system) |
-| 08  | Algorithms Level 4 | ⏳ In Progress |  |
+| 08  | Algorithms Level 4 | ⏳ In Progress | [Bank System v2](https://github.com/itsamal0/bank_system_v2)<br>[ATM System](https://github.com/itsamal0/atm_system) |
 | 09  | Foundations Level 2 | Not Started |  |
 | 10  | OOP Level 1 | Not Started |  |
 | 11  | OOP Level 2 | Not Started |  |
