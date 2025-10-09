@@ -15,7 +15,7 @@ This file documents my progress through a structured **25-course roadmap** from 
 | 07  | Algorithms Level 3 | ✅ Completed | [Bank System](https://github.com/itsamal0/bank_system) |
 | 08  | Algorithms Level 4 | ✅ Completed | [Bank System v2](https://github.com/itsamal0/bank_system_v2)<br>[ATM System](https://github.com/itsamal0/atm_system) |
 | 09  | Foundations Level 2 | ✅ Completed | — |
-| 10  | OOP Level 1 | Not Started |  |
+| 10  | OOP Level 1 | ⏳ In Progress |  |
 | 11  | OOP Level 2 | Not Started |  |
 | 12  | Data Structures Level 1 | Not Started |  |
 | 13  | Algorithms Level 5 | Not Started |  |
